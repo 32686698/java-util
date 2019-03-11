@@ -13,6 +13,7 @@
   <modules>
     <module>java-redis</module>
       <module>java-proxy</module>
+    <module>java-singleton</module>
   </modules>
 
   <properties>
