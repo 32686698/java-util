@@ -12,6 +12,7 @@
 
   <modules>
     <module>java-redis</module>
+      <module>java-proxy</module>
   </modules>
 
   <properties>
@@ -23,6 +24,8 @@
     <redis.clients.version>2.9.0</redis.clients.version>
     <commons-lang.version>2.6</commons-lang.version>
     <org.slf4j.version>1.7.5</org.slf4j.version>
+    <cglib.version>3.1</cglib.version>
+    <asm.version>5.0.4</asm.version>
   </properties>
 
   <dependencyManagement>
@@ -47,6 +50,17 @@
         <artifactId>slf4j-api</artifactId>
         <version>${org.slf4j.version}</version>
       </dependency>
+      <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>${cglib.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+        <version>${asm.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 </project>
