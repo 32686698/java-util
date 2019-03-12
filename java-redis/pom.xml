@@ -28,5 +28,23 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>xzxt-casecb-service</finalName>
+        <resources>
+            <resource>
+                <targetPath>${project.build.directory}/test-classes</targetPath>
+                <directory>src/main/resource</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

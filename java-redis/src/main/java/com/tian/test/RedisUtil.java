@@ -19,7 +19,7 @@ public class RedisUtil {
     /**
      * redis属性文件路径
      */
-    private static final String REDISDB_CONFIG_PATH = "/resource/redis.properties";
+    private static final String REDISDB_CONFIG_PATH = "/redis.properties";
 
     public static final String TYPE_GET = "get";
     public static final String TYPE_SAVE = "save";
@@ -27,10 +27,10 @@ public class RedisUtil {
     public static final String DB_PARAM = "db";
     public static final Integer EXPIRE_SECONDS;
 
-    public static final Integer SESSION_DB;
-    public static final Integer DICT_DB;
-    public static final Integer XXBK_DB;
-    public static final Integer DEFAULT_DB;
+    public static final Integer DB_1;
+    public static final Integer DB_2;
+    public static final Integer DB_3;
+    public static final Integer DB_4;
     
     /** redis key **/
     public static final String AUTHURI = "SYS:AUTHURI";
@@ -43,10 +43,10 @@ public class RedisUtil {
     static {
         PropertiesUtil redisdbProperties = new PropertiesUtil(REDISDB_CONFIG_PATH);
 
-        SESSION_DB = redisdbProperties.getInteger("redis.session.db");
-        DICT_DB = redisdbProperties.getInteger("redis.dict.db");
-        XXBK_DB = redisdbProperties.getInteger("redis.xxbk.db");
-        DEFAULT_DB = redisdbProperties.getInteger("redis.default.db");
+        DB_1 = redisdbProperties.getInteger("redis.session.db");
+        DB_2 = redisdbProperties.getInteger("redis.dict.db");
+        DB_3 = redisdbProperties.getInteger("redis.xxbk.db");
+        DB_4 = redisdbProperties.getInteger("redis.default.db");
         EXPIRE_SECONDS = redisdbProperties.getInteger("redis.expired.time");
         try {
             JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
@@ -61,17 +61,17 @@ public class RedisUtil {
             if (StringUtils.isBlank(password))
                 password = null;
 
-            JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, SESSION_DB);
-            jedisPools.put(SESSION_DB, jedisPool);
+            JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DB_1);
+            jedisPools.put(DB_1, jedisPool);
 
-            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DICT_DB);
-            jedisPools.put(DICT_DB, jedisPool);
+            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DB_2);
+            jedisPools.put(DB_2, jedisPool);
 
-            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, XXBK_DB);
-            jedisPools.put(XXBK_DB, jedisPool);
+            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DB_3);
+            jedisPools.put(DB_3, jedisPool);
 
-            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DEFAULT_DB);
-            jedisPools.put(DEFAULT_DB, jedisPool);
+            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, DB_4);
+            jedisPools.put(DB_4, jedisPool);
 
         } catch (Exception ex) {
             logger.error("Redis Util : initialize jedis pool fail , " + ex);
