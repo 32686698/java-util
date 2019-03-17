@@ -12,9 +12,10 @@
 
   <modules>
     <module>java-redis</module>
-      <module>java-proxy</module>
+    <module>java-proxy</module>
     <module>java-singleton</module>
     <module>java-io</module>
+    <module>java-nio</module>
   </modules>
 
   <properties>
